@@ -1,0 +1,30 @@
+{%extends 'blog/base.html'%}
+{%block title_block%}MY BLOG HOME PAGE{%endblock%}
+{%block content%}
+<h1>My Blog</h1>
+
+{%if tag%} {#}it means if tag is not None i.e tag has some slug value  and these things will be displayed when a person clicks on the tag link{#}
+<h2>Posts tagged with "{{tag.name}}"</h2>
+{%endif%}
+
+{%for post in post_list%}
+<a href="{{post.get_absolute_url}}"><h2>{{post.title}}</h2></a>
+
+<p id="date">Published on {{post.publish}} by {{post.author|title}}</p>
+ <P> {#}to separate tags by comma and space{#}
+   Tags:
+   {%for tag in post.tags.all%}  {#}i.e for every tag in post.tags.all{#}
+   <a href=" {%url 'post_list_by_tag_name' tag.slug %} " class="btn btn-success">{{tag.name}}</a>   {#}i.e whenever the anchor tag link is clicked then it will go to view() and it will display all posts related to the particular tag {#}
+  {#} {%if not forloop.last%},{%endif%}  # it means if it is not forloop last then put a comma after each tag 'but there will be no comma after last tag'{#}
+   {%endfor%}   {#}here tag.slug is the argument which is mandatory which means can u plz build the url with this argument tag.slug{#}
+</p>            {#}tag.slug means for every tag having the slug{#}
+{{post.body|truncatewords:30|linebreaks}}
+
+{%endfor%}
+
+<!--{%include 'blog/pagination.html' with page=page_obj%}--> <!--also used for comment in html--> {#}(note:- jinja 2 code for CLASSBASED pagination){#}
+
+{%include 'blog/pagination.html' with page=post_list%}    {#}(#NOTE:---> JINJA 2 CODE FOR FUNCTION BASED PAGINATION){#}
+
+{%endblock%}
+{#}<h1>PAGE COUNT IS:<span>{{count}}</span></h1> it is used to comment the lines{#}

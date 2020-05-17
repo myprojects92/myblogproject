@@ -1,0 +1,57 @@
+.content{
+width:50%;
+float:left;
+background:yellow;
+padding: 0 0 0 30px;
+height:100%
+}
+.sidebar
+{
+width:40%;
+float:right;
+background:white;
+padding:0 0 0 10px;
+height:100%
+}
+body
+{
+background:yellow;
+color:blue;
+}
+h1
+{
+text-align: center;
+border-bottom: 1px solid blue;
+padding: 0 0 10px;
+}
+#date
+{
+  color:blue;
+  font-size:15px;
+  font-style:italic;
+}
+#ch
+{
+  color:blue;
+  font-size:20px;
+  font-style:italic;
+  border-bottom: 2px solid blue;
+}
+a
+{
+color:blue;
+}
+img
+{
+  height: 200px;
+  width: 30%;
+  float: left;
+  margin: 1.5%;
+  border: 2px;
+}
+#pcount
+{
+  font-size: 30px;
+  color: blue;
+  font-weight:bold;
+}
